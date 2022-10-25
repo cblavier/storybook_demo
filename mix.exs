@@ -49,7 +49,8 @@ defmodule StorybookDemo.MixProject do
 
       # added
       {:heroicons, "~> 0.5"},
-      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
+      {:phx_live_storybook, "0.4.5"}
     ]
   end
 

@@ -1,5 +1,6 @@
 defmodule StorybookDemoWeb.Router do
   use StorybookDemoWeb, :router
+  import PhxLiveStorybook.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -18,6 +19,15 @@ defmodule StorybookDemoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+  end
+
+  scope "/" do
+    storybook_assets()
+  end
+
+  scope "/", StorybookDemoWeb do
+    pipe_through(:browser)
+    live_storybook("/storybook", backend_module: StorybookDemoWeb.Storybook)
   end
 
   # Other scopes may use custom stacks.
